@@ -12,4 +12,4 @@
 - [io.c](https://github.com/sklaw/enee447project3_hw_template_Shuangqi_sessions/blob/master/io.c)
 
 ## Readings
-- (p3.pdf)[https://github.com/sklaw/enee447project3_hw_template_Shuangqi_sessions/blob/master/p3.pdf]
+- [p3.pdf](https://github.com/sklaw/enee447project3_hw_template_Shuangqi_sessions/blob/master/p3.pdf)
