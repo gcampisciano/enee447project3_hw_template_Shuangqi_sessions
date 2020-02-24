@@ -13,3 +13,12 @@
 
 ## Readings
 - [p3.pdf](https://github.com/sklaw/enee447project3_hw_template_Shuangqi_sessions/blob/master/p3.pdf)
+
+## What's happening in this kernel
+- When our kernel runs, it'll first hit the first instruction in [`1_boot.s`](https://github.com/sklaw/enee447project3_hw_template_Shuangqi_sessions/blob/master/1_boot.s#L3) since we let `1_boot.o` become the entry point of our kernel [by doing this](https://github.com/sklaw/enee447project3_hw_template_Shuangqi_sessions/blob/master/memmap#L10)
+- Then it'll jump to `res_handler `. 
+	- Since every core of the CPU will execute the same code, we will do some core ID testing [here](https://github.com/sklaw/enee447project3_hw_template_Shuangqi_sessions/blob/master/1_boot.s#L30-L38) and let only core 0 to move on (other cores will hit `hang` and stop).
+- Core 0 then will execute `init_kernel` [from here](https://github.com/sklaw/enee447project3_hw_template_Shuangqi_sessions/blob/master/1_boot.s#L70),
+	- Then it will execute `init_io` [from here](https://github.com/sklaw/enee447project3_hw_template_Shuangqi_sessions/blob/master/kernel.c#L24)
+		- Then it will iterate over an array of devices and call their init functions [here](https://github.com/sklaw/enee447project3_hw_template_Shuangqi_sessions/blob/master/io.c#L118-L120)
+			- NOTE: Basically one device is abstracted as a [`struct dev`](https://github.com/sklaw/enee447project3_hw_template_Shuangqi_sessions/blob/master/io.h#L6-L12) and they're all set up [here](https://github.com/sklaw/enee447project3_hw_template_Shuangqi_sessions/blob/master/io.c#L66-L109)
