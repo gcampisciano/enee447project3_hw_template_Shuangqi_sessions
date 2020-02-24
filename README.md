@@ -34,3 +34,33 @@
 		- whether the target device is communicated through word or stream (this detail is documented in [p3.pdf](https://github.com/sklaw/enee447project3_hw_template_Shuangqi_sessions/blob/master/p3.pdf))
 
 ## About making a system call
+Making a system call is basically issuing an interrupt. Once the hardware receives this interrupt, it will execute its corresponding interrupt handler.
+
+In this project, the above process is done by `svc` command.
+
+### Example: `syscall_read_stream`
+The implementation of `syscall_read_stream` can be found [here](https://github.com/sklaw/enee447project3_hw_template_Shuangqi_sessions/blob/master/syscalls.c#L42-L56)
+
+Here is what happens when it's called:
+- It first initializes some values in register `r0`, `r1`, `r2`, `r7`
+	- How to assign values to registers in C?
+		- If you're curious you can read [this](https://gcc.gnu.org/onlinedocs/gcc-6.1.0/gcc/Local-Register-Variables.html)
+	- Why these registers?
+		- Well, this is dependent on the API of system call handler, which is the `trap_handler` [here](https://github.com/sklaw/enee447project3_hw_template_Shuangqi_sessions/blob/master/trap_handler.c#L12-L15)
+- Then it will execute a `svc` command
+- The `svc` command will transition into kernel mode then hit [this line](https://github.com/sklaw/enee447project3_hw_template_Shuangqi_sessions/blob/master/1_boot.s#L5)
+- After saving the context, it will call `trap_handler` [from here](https://github.com/sklaw/enee447project3_hw_template_Shuangqi_sessions/blob/master/1_boot.s#L95)
+- Then in `trap_handler`, the system call will be parsed and executed.
+
+
+
+
+
+
+
+
+
+
+
+
+
