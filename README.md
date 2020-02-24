@@ -22,3 +22,15 @@
 	- Then it will execute `init_io` [from here](https://github.com/sklaw/enee447project3_hw_template_Shuangqi_sessions/blob/master/kernel.c#L24)
 		- Then it will iterate over an array of devices and call their init functions [here](https://github.com/sklaw/enee447project3_hw_template_Shuangqi_sessions/blob/master/io.c#L118-L120)
 			- NOTE: Basically one device is abstracted as a [`struct dev`](https://github.com/sklaw/enee447project3_hw_template_Shuangqi_sessions/blob/master/io.h#L6-L12) and they're all set up [here](https://github.com/sklaw/enee447project3_hw_template_Shuangqi_sessions/blob/master/io.c#L66-L109)
+
+- Core 0 then will execute `run_shell` from [here](https://github.com/sklaw/enee447project3_hw_template_Shuangqi_sessions/blob/master/1_boot.s#L75)
+	- `run_shell` basically reads/writes some data form/to devices via the following system calls
+		- syscall_write_stream 
+		- syscall_write_word
+		- syscall_read_stream  
+		- syscall_read_word 
+	- The choice of making which of the four function calls is dependent on
+		- whether you want to read or write
+		- whether the target device is communicated through word or stream (this detail is documented in [p3.pdf](https://github.com/sklaw/enee447project3_hw_template_Shuangqi_sessions/blob/master/p3.pdf))
+
+## About making a system call
