@@ -50,7 +50,7 @@ Here is what happens when it's called:
 - Then it will execute a `svc` command
 - The `svc` command will transition into kernel mode then hit [this line](https://github.com/sklaw/enee447project3_hw_template_Shuangqi_sessions/blob/master/1_boot.s#L5)
 - After saving the context, it will call `trap_handler` [from here](https://github.com/sklaw/enee447project3_hw_template_Shuangqi_sessions/blob/master/1_boot.s#L95)
-- Then in `trap_handler`, the system call will be parsed and executed.
+- Then in [`trap_handler`](https://github.com/sklaw/enee447project3_hw_template_Shuangqi_sessions/blob/master/trap_handler.c#L37-L84), the system call will be parsed and executed.
 
 
 
