@@ -42,7 +42,7 @@ In this project, the above process is done by `svc` command.
 The implementation of `syscall_read_stream` can be found [here](https://github.com/sklaw/enee447project3_hw_template_Shuangqi_sessions/blob/master/syscalls.c#L42-L56)
 
 Here is what happens when it's called:
-- It first initializes some values in register `r0`, `r1`, `r2`, `r7`
+- It first [initializes some values in register](https://github.com/sklaw/enee447project3_hw_template_Shuangqi_sessions/blob/master/syscalls.c#L44-L47) `r0`, `r1`, `r2`, `r7`
 	- How to assign values to registers in C?
 		- If you're curious you can read [this](https://gcc.gnu.org/onlinedocs/gcc-6.1.0/gcc/Local-Register-Variables.html)
 	- Why these registers?
