@@ -39,20 +39,20 @@ trap_handler(unsigned long r0, unsigned long r1, unsigned long r2)
 		case SYSCALL_KVERSION:
 			debug(DEBUG_LOW, "SYSCALL_WR_WORD dev  = ", r0);
 
-			// your code goes here
+			
 
 			break;
 		case SYSCALL_RD_WORD:
 			debug(DEBUG_LOW, "SYSCALL_RD_WORD dev = ", r0);
 
-			// your code goes here
+			devtab[r0].read();
 
 			break;
 		case SYSCALL_WR_WORD:
 			debug(DEBUG_LOW, "SYSCALL_WR_WORD dev  = ", r0);
 			debug(DEBUG_LOW, "SYSCALL_WR_WORD data = ", r1);
 
-			// your code goes here
+			devtab[r0].write(r1);
 
 			break;
 		case SYSCALL_RD_STREAM:
@@ -60,7 +60,7 @@ trap_handler(unsigned long r0, unsigned long r1, unsigned long r2)
 			debug(DEBUG_LOW, "SYSCALL_RD_STREAM buf = ", r1);
 			debug(DEBUG_LOW, "SYSCALL_RD_STREAM siz = ", r2);
 
-			// your code goes here
+			devtab[r0].read(r1, r2);
 
 			break;
 		case SYSCALL_WR_STREAM:
@@ -68,7 +68,7 @@ trap_handler(unsigned long r0, unsigned long r1, unsigned long r2)
 			debug(DEBUG_LOW, "SYSCALL_WR_STREAM buf = ", r1);
 			debug(DEBUG_LOW, "SYSCALL_RD_STREAM siz = ", r2);
 
-			// your code goes here
+			devtab[r0].write(r1, r2);
 
 			break;
 
