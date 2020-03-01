@@ -38,13 +38,14 @@ int
 io_get_time(uint64_t *buf, int size)
 {
 	buf = get_time();
-	return buf;
+	return 1;
 }
 
 int
 io_uart_recv()
 {
-	return uart_recv();
+	uart_recv();
+	return 1;
 }
 
 int
