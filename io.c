@@ -20,37 +20,45 @@ io_error(long arg)
 int
 io_read_led()
 {
-	// your code goes here
+	return 1;
 }
 
 int
 io_write_led(int buf)
 {
-	// your code goes here
+	if(buf == 1) {
+		led_on();
+	} else {
+		led_off();
+	}
+	return 1;
 }
 
 int
 io_get_time(uint64_t *buf, int size)
 {
-	// your code goes here
+	buf = get_time();
+	return buf;
 }
 
 int
 io_uart_recv()
 {
-	// your code goes here
+	return uart_recv();
 }
 
 int
 io_uart_send(unsigned int buf)
 {
-	// your code goes here
+	uart_send(buf);
+	return 1;
 }
 
 int
 io_klog(char *buf, int siz)
 {
-	// your code goes here
+	log(buf, siz);
+	return 1;
 }
 
 
