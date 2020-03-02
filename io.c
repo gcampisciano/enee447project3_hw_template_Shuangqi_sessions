@@ -37,8 +37,8 @@ io_write_led(int buf)
 int
 io_get_time(uint64_t *buf, int size)
 {
-	buf = get_time();
-	return buf;
+	*buf = get_time();
+	return 1;
 }
 
 int
@@ -57,7 +57,7 @@ io_uart_send(unsigned int buf)
 int
 io_klog(char *buf, int siz)
 {
-	log(buf, siz);
+	log(buf, NOVAL);
 	return 1;
 }
 
